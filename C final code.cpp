@@ -19,6 +19,13 @@ struct products
 	float price;
 };
 
+union job
+{
+	char name[32];
+	int salary;
+	int workerNo;
+};
+
 
 int main()
 {
@@ -249,7 +256,7 @@ int main()
 							break;
 								
 						case 9:
-							printf("\nEnter a number to check it is amstrong or not:");
+							printf("\nEnter a number to check it is armstrong or not:");
 							scanf("%d",&num);
 							sum=0;
 							temp=num;
@@ -318,7 +325,7 @@ int main()
 							break;
 							
 						default:
-							printf("Please select options from 1-11 only.....");
+							printf("Please select options from 1-13 only.....");
 							break;
 					    }
 				    	break;
@@ -367,9 +374,12 @@ int main()
 								
 							case 2:
 								printf("\nThere are two types of calling methods which are call by value and call by reference");
-								printf("\n\n\n1. Call by value\n2. Call by reference");
+								printf("\n\n\n"
+								"1. Call by value\n"
+								"2. Call by reference");
+								
 								int ch5;
-								printf("\nPlease enter your choice:");
+								printf("\nPlease enter your choice: ");
 								scanf("%d",&ch5);
 								switch(ch5)
 								{
@@ -425,7 +435,7 @@ int main()
 								break;
 																
 							default:
-								printf("Enter case 1-3 only");
+								printf("Enter case 1-2 only");
 								break;
 						}
 					break;
@@ -565,30 +575,30 @@ int main()
 													
 													break;
 														
-													case 2:
-														loc=-1,beg=0,last=9; 
-														printf("\nEnter any 10 array elements in ascending order:");
-														for(i=0;i<10;i++)
-															scanf("%d",&arr[i]);
-														printf("\nEnter the element to search:");
-														scanf("%d",&key);
-														while(beg<=last)
+												case 2:
+													loc=-1,beg=0,last=9; 
+													printf("\nEnter any 10 array elements in ascending order:");
+													for(i=0;i<10;i++)
+														scanf("%d",&arr[i]);
+													printf("\nEnter the element to search:");
+													scanf("%d",&key);
+													while(beg<=last)
+													{
+														mid=(beg+last)/2;
+														if(arr[mid]==key)
 														{
-															mid=(beg+last)/2;
-															if(arr[mid]==key)
-															{
-																loc=mid;
-																break;
-															}
-															else if(arr[mid]>key)
-																last=mid-1;
-															else if(arr[mid]<key)
-																beg=mid+1;
-															}
-															if(loc!=-1)
-																printf("\nThe element found at location %d",loc+1);													
-															else
-																printf("\nElement not found.");
+															loc=mid;
+															break;
+														}
+														else if(arr[mid]>key)
+															last=mid-1;
+														else if(arr[mid]<key)
+															beg=mid+1;
+														}
+														if(loc!=-1)
+															printf("\nThe element found at location %d",loc+1);													
+														else
+															printf("\nElement not found.");
 												}
 												break;
 												
@@ -820,7 +830,19 @@ int main()
 								}
 							//	break;
 							case 2:
-								printf("\nUnions is under process")	;
+								job pjob;
+								printf("\nThe size of the union is: %d bytes", sizeof(pjob));
+								printf("\nEnter the name, salary, worker number: ");
+								scanf("%s",&pjob.name);
+								scanf("%d",&pjob.salary);
+								scanf("%d",&pjob.workerNo);
+								
+								printf("\nThe union members are : ");
+								printf("\nName = %s",pjob.name);
+								printf("\nSalary = %d",pjob.salary);
+								printf("\nWorker number = %d",pjob.workerNo);
+								printf("\nThe name and the salary are corrupted as we can only access one union member at a time.");
+								
 								break;
 								
 							default:printf("\nEnter case 1-2 only");
@@ -853,11 +875,11 @@ int main()
 
 void showOptions(){
 	printf("\n\n\t\t\t\t\t"
-	"1. Basics of C\n\t\t\t\t\t"
-	"2. Control Structure\n\t\t\t\t\t"
-	"3. Functions\n\t\t\t\t\t"
-	"4. Arrays and Pointers\n\t\t\t\t\t"
-	"5. Strings\n\t\t\t\t\t"
+	"1. Basics of C  \n\t\t\t\t\t"
+	"2. Control Structure  \n\t\t\t\t\t"
+	"3. Functions  \n\t\t\t\t\t"
+	"4. Arrays and Pointers  \n\t\t\t\t\t"
+	"5. Strings  \n\t\t\t\t\t"
 	"6. Structres and Unions");
 }
 
